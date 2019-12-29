@@ -11,10 +11,10 @@ class Circle {
   Lazy<double> _circumference;
 
   Circle(this.radius) {
-    _circumference = Lazy<double>(() {
+    _circumference = Lazy(() {
       return math.pi * radius * 2;
     });
-    _area = Lazy<Future<double>>(() async {
+    _area = Lazy(() async {
       // simulating something heavy and asynchronous
       await Future.delayed(Duration(seconds: 2));
       return math.pi * math.pow(radius, 2);

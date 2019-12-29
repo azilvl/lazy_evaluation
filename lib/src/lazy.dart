@@ -1,20 +1,21 @@
 typedef LazyFactory<T> = T Function();
 
+/// Lazily returns `T` when needed.
 class Lazy<T> {
   /// Returns true if the [value] has been created and cached.
   bool get isValueCreated => _isValueCreated;
 
-  /// Returns the evaluated value.
-  /// If the value hasn't been evaluated yet, it runs the factory and gets the value,
-  /// Else it returns the cached value.
+  /// Returns the evaluated [value].
+  /// If the [value] hasn't been evaluated yet, it runs the factory and gets the [value],
+  /// Else it returns the cached [value].
   T get value => _isValueCreated ? _value : _createValue();
 
-  /// Returns the evaluated value.
-  /// If the value hasn't been evaluated yet, it runs the factory and gets the value,
-  /// Else it returns the cached value.
+  /// Returns the evaluated [value].
+  /// If the [value] hasn't been evaluated yet, it runs the factory and gets the [value],
+  /// Else it returns the cached [value].
   T call() => value;
 
-  /// Takes a function that returns T.
+  /// Takes a function that returns `T`.
   Lazy(this._factory);
 
   LazyFactory<T> _factory;
@@ -30,16 +31,19 @@ class Lazy<T> {
   }
 }
 
+/// Lazily returns `T` when needed. gets notified by a [reEvaluate(cls)] call that something has been modified and it needs to re-evaluate.
 class MutableLazy<T> extends Lazy<T> {
+  
+  /// Takes a function that returns `T`.
   MutableLazy(LazyFactory<T> factory) : super(factory);
 
-  /// Notifies the Lazy object that something that was used in the factory has been changed and it needs to re-evaluate next time it tries to get the object.
   //TODO: think of a better name for this.
+  /// Notifies the Lazy object that something that was used in the factory has been changed and it needs to re-evaluate next time it tries to get the object.
   void reEvaluate() {
     _isValueCreated = false;
     _value = null;
   }
-
+ 
   @override
   T _createValue() {
     assert(_factory != null, "Lazy factory shouldn't be null");
