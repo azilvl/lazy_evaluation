@@ -1,7 +1,7 @@
 name: lazy_evaluation
 description: Simple package to lazily evaluate T using Lazy<T>.
 version: 0.0.1
-# homepage: https://www.example.com
+homepage: https://github.com/azilvl/lazy_evaluation
 
 environment:
   sdk: '>=2.7.0 <3.0.0'
