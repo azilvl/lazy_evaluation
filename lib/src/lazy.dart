@@ -33,7 +33,6 @@ class Lazy<T> {
 
 /// Lazily returns `T` when needed. gets notified by a [reEvaluate(cls)] call that something has been modified and it needs to re-evaluate.
 class MutableLazy<T> extends Lazy<T> {
-  
   /// Takes a function that returns `T`.
   MutableLazy(LazyFactory<T> factory) : super(factory);
 
@@ -43,7 +42,7 @@ class MutableLazy<T> extends Lazy<T> {
     _isValueCreated = false;
     _value = null;
   }
- 
+
   @override
   T _createValue() {
     assert(_factory != null, "Lazy factory shouldn't be null");
