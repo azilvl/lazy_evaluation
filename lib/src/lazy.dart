@@ -5,16 +5,16 @@ class Lazy<T> {
   bool get isValueCreated => _isValueCreated;
 
   /// Returns the evaluated value.
-  /// If the value hasn't been evaluated yet, it runs the [_factory] and gets the value,
+  /// If the value hasn't been evaluated yet, it runs the factory and gets the value,
   /// Else it returns the cached value.
   T get value => _isValueCreated ? _value : _createValue();
 
   /// Returns the evaluated value.
-  /// If the value hasn't been evaluated yet, it runs the [_factory] and gets the value,
+  /// If the value hasn't been evaluated yet, it runs the factory and gets the value,
   /// Else it returns the cached value.
   T call() => value;
 
-  /// Takes a function ([_factory]) that returns [T].
+  /// Takes a function that returns T.
   Lazy(this._factory);
 
   LazyFactory<T> _factory;
@@ -33,7 +33,7 @@ class Lazy<T> {
 class MutableLazy<T> extends Lazy<T> {
   MutableLazy(LazyFactory<T> factory) : super(factory);
 
-  /// Notifies the Lazy object that something that was used in the [_factory] has been changed and it needs to re-evaluate next time it tries to get the object.
+  /// Notifies the Lazy object that something that was used in the factory has been changed and it needs to re-evaluate next time it tries to get the object.
   //TODO: think of a better name for this.
   void reEvaluate() {
     _isValueCreated = false;
