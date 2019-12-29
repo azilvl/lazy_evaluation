@@ -1,4 +1,7 @@
-## Usage
+# Lazy Evaluation
+A simple package to cache and lazily evaluate objects that have a costly initialization process. 
+
+### Usage
 
 ```dart
 import 'package:lazy_evaluation/lazy_evaluation.dart';
