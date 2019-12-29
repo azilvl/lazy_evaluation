@@ -1,3 +1,7 @@
+## 0.0.4+2
+
+- Improved documentation
+
 ## 0.0.4+1
 
 - Improved documentation
