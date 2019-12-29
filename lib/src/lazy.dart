@@ -21,8 +21,6 @@ class Lazy<T> {
   T _value;
   bool _isValueCreated = false;
 
-  
-
   T _createValue() {
     assert(_factory != null, "Lazy factory shouldn't be null");
     _value = _factory();
@@ -35,7 +33,7 @@ class Lazy<T> {
 class MutableLazy<T> extends Lazy<T> {
   MutableLazy(LazyFactory<T> factory) : super(factory);
 
-  /// Notifies the Lazy object that something that was used in the [_factory] has been changed and it needs to re-evaluate next time it tries to get the object. 
+  /// Notifies the Lazy object that something that was used in the [_factory] has been changed and it needs to re-evaluate next time it tries to get the object.
   //TODO: think of a better name for this.
   void reEvaluate() {
     _isValueCreated = false;
