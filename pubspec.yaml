@@ -1,6 +1,6 @@
 name: lazy_evaluation
 description: Simple package to lazily evaluate objects.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/azilvl/lazy_evaluation
 
 environment:
