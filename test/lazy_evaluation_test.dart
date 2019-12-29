@@ -17,16 +17,18 @@ void main() {
       },
     );
     test(
-      '[Lazy.value] should return value',
+      '[Lazy.value] and [lazy()] both should return a value',
       () async {
         // arrange
         var lazyint = Lazy(() {
           return tInt;
         });
         // act
-        var result = lazyint.value;
+        var result1 = lazyint.value;
+        var result2 = lazyint();
         // assert
-        expect(result, tInt);
+        expect(result1, tInt);
+        expect(result2, tInt);
       },
     );
 
