@@ -18,3 +18,16 @@ class Lazy<T> {
     return _value;
   }
 }
+
+class MutableLazy<T> extends Lazy<T> {
+  MutableLazy(LazyFactory<T> factory) : super(factory);
+  void reEvaluate() => _isValueCreated = false;
+
+  @override
+  T _createValue() {
+    assert(_factory != null, "Lazy factory shouldn't be null");
+    _value = _factory();
+    _isValueCreated = true;
+    return _value;
+  }
+}
