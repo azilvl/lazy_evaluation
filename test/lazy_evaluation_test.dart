@@ -76,22 +76,21 @@ void main() {
       },
     );
   });
-  group('[MutableLazy<T>]', (){   
+  group('[MutableLazy<T>]', () {
     test(
       'should be able to change a refrenced object in the factory and get updated value',
-      ()async {
+      () async {
         // arrange
-        var number =tInt;
-        var lazyint = MutableLazy(()=>number);
+        var number = tInt;
+        var lazyint = MutableLazy(() => number);
         // act
         var result1 = lazyint.value;
         number = 5;
         lazyint.reEvaluate();
-        var result2= lazyint.value;
+        var result2 = lazyint.value;
         // assert
         expect(result1 + result2, 6);
       },
-    ); 
-    
+    );
   });
 }
