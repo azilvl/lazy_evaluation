@@ -17,7 +17,7 @@ class Lazy<T> {
   /// Takes a function that returns T.
   Lazy(this._factory);
 
-  LazyFactory<T> _factory ;
+  LazyFactory<T> _factory;
   T _value;
   bool _isValueCreated = false;
 
