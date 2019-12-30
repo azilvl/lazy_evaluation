@@ -36,9 +36,7 @@ class Lazy<T> {
 ///
 /// ```dart
 /// var number = 1;
-/// var mutableLazy = MutableLazy(() {
-///   return number * 3;
-/// });
+/// var mutableLazy = MutableLazy(() => number * 3);
 /// print(mutableLazy.value); // 3
 /// number = 2;
 /// mutableLazy.notifyChange();

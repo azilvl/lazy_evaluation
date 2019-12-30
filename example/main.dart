@@ -11,9 +11,7 @@ class Circle {
   Lazy<double> _circumference;
 
   Circle(this.radius) {
-    _circumference = Lazy(() {
-      return math.pi * radius * 2;
-    });
+    _circumference = Lazy(() => math.pi * radius * 2);
     _area = Lazy(() async {
       // simulating something heavy and asynchronous
       await Future.delayed(Duration(seconds: 2));

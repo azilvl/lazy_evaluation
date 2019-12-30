@@ -1,5 +1,9 @@
 ## 0.0.5
 
+- improved the examples
+
+## 0.0.5
+
 - Renamed `reEvaluate()` to `notifyChange()` to more accurately represent its job
 
 ## 0.0.4+3
