@@ -5,9 +5,9 @@ class Lazy<T> {
   /// Returns true if the [value] has been created and cached.
   bool get isValueCreated => _isValueCreated;
 
-  /// Returns the evaluated object.
+  /// the evaluated object.
   /// If the object hasn't been evaluated yet, it runs the factory and gets it,
-  /// Else it returns the cached [value].
+  /// Else it returns the cached value.
   T get value => _isValueCreated ? _value : _createValue();
 
   /// Returns the evaluated object.
