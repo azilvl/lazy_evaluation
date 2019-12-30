@@ -31,15 +31,25 @@ class Lazy<T> {
   }
 }
 
-/// Lazily returns `T` when needed. 
-/// gets notified by a [reEvaluate()] call that something has been modified and it needs to re-evaluate.
+/// Lazily returns `T` when needed.
+/// gets notified by a [notifyChange()] call that something has been modified and it needs to re-evaluate.
+///
+/// ```dart
+/// var number = 1;
+/// var mutableLazy = MutableLazy(() {
+///   return number * 3;
+/// });
+/// print(mutableLazy.value); // 3
+/// number = 2;
+/// mutableLazy.notifyChange();
+/// print(mutableLazy.value); // 6
+/// ```
 class MutableLazy<T> extends Lazy<T> {
   /// Takes a function that returns `T`.
   MutableLazy(LazyFactory<T> factory) : super(factory);
 
-  //TODO: think of a better name for this.
-  /// Notifies the [Lazy] object that something that was used in the factory has been changed and it needs to re-evaluate next time it tries to get the object.
-  void reEvaluate() {
+  /// Notifies the Lazy object that something that was used in the factory has been changed and it needs to re-evaluate next time it tries to get the object.
+  void notifyChange() {
     _isValueCreated = false;
     _value = null;
   }
