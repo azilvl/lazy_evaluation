@@ -1,6 +1,6 @@
 ## 0.0.5
 
-- Renamed function to `notifyChange()` to more accurately represent its job
+- Renamed `reEvaluate()` to `notifyChange()` to more accurately represent its job
 
 ## 0.0.4+3
 
