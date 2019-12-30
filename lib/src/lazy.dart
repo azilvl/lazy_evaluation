@@ -29,6 +29,12 @@ class Lazy<T> {
     _isValueCreated = true;
     return _value;
   }
+
+  @override
+  bool operator ==(other) => other is Lazy && other._value == _value;
+
+  @override
+  int get hashCode => _value.hashCode;
 }
 
 /// Lazily returns `T` when needed.

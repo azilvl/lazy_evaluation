@@ -77,6 +77,19 @@ void main() {
         expect(number, tInt + 1);
       },
     );
+    test(
+      'two instances with the same value should be equal',
+      () async {
+        // arrange
+        var lazy1 = Lazy(() => tInt);
+        var lazy2 = Lazy(() => tInt);
+        // act
+        lazy1.value;
+        lazy2.value;
+        // assert
+        expect(lazy1, lazy2);
+      },
+    );
   });
   group('[MutableLazy<T>]', () {
     test(

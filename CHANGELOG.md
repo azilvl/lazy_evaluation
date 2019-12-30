@@ -1,3 +1,7 @@
+## 0.0.5+2
+
+- overridden `hashCode` and the `==` operator. two instances of Lazy are equal if their values are equal
+
 ## 0.0.5+1
 
 - improved example
