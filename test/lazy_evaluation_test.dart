@@ -104,7 +104,24 @@ void main() {
         lazyInt.notifyChange();
         var result2 = lazyInt.value;
         // assert
-        expect(result1 + result2, 6);
+        expect(result1 + result2, number + tInt);
+      },
+    );
+    test(
+      'two instances with the same value should be equal',
+      () async {
+        var number = tInt - 1;
+        // arrange
+        var lazy1 = MutableLazy(() => tInt);
+        var lazy2 = MutableLazy(() => number);
+        // act
+        lazy1.value;
+        lazy2.value;
+        number++;
+        lazy2.notifyChange();
+        lazy2.value;
+        // assert
+        expect(lazy1, lazy2);
       },
     );
   });
