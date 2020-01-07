@@ -1,25 +1,23 @@
-typedef LazyFactory<T> = T Function();
+typedef InitFunction<T> = T Function();
 
-/// Lazily returns `T` when needed.
+/// Lazily creates `T` when needed.
 class Lazy<T> {
-  /// Takes a function that returns `T`.
-  Lazy(this._factory);
+  /// during the initialization, the [function] specified here gets used and creates the value.
+  Lazy(InitFunction<T> function) {
+    _factory = function;
+  }
 
-  LazyFactory<T> _factory;
+  InitFunction<T> _factory;
 
   /// Returns true if the [value] has been created and cached.
   bool get isValueCreated => _isValueCreated;
   bool _isValueCreated = false;
 
-  /// the evaluated object.
-  /// If the object hasn't been evaluated yet, it runs the factory and gets it,
-  /// Else it returns the cached value.
+  /// the lazily initialized value.
   T get value => _isValueCreated ? _value : _createValue();
   T _value;
 
-  /// Returns the evaluated object.
-  /// If the object hasn't been evaluated yet, it runs the factory and gets it,
-  /// Else it returns the cached [value].
+  /// Returns the lazily initialized [value].
   T call() => value;
 
   T _createValue() {
@@ -38,8 +36,8 @@ class Lazy<T> {
   int get hashCode => _value.hashCode;
 }
 
-/// Lazily returns `T` when needed.
-/// gets notified by a [notifyChange()] call that something has been modified and it needs to re-evaluate.
+/// Lazily creates `T` when needed.
+/// gets notified by a [notifyChange()] call that something has been modified and it needs to re-create the value.
 ///
 /// ```dart
 /// var number = 1;
@@ -50,10 +48,10 @@ class Lazy<T> {
 /// print(mutableLazy.value); // 6
 /// ```
 class MutableLazy<T> extends Lazy<T> {
-  /// Takes a function that returns `T`.
-  MutableLazy(LazyFactory<T> factory) : super(factory);
+  /// for each initialization, the [function] specified here gets used and creates the value.
+  MutableLazy(InitFunction<T> function) : super(function);
 
-  /// Notifies the Lazy object that something that was used in the factory has been changed and it needs to re-evaluate next time it tries to get the [value].
+  /// Notifies the Lazy object that something that was used in the init function has been changed and it needs to re-initialize next time it tries to get the [value].
   void notifyChange() {
     _isValueCreated = false;
     _value = null;

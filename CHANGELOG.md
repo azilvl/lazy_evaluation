@@ -1,3 +1,7 @@
+## 0.0.6+1
+
+- improved documentation
+
 ## 0.0.6
 
 - minor improvements
