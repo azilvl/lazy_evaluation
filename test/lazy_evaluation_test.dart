@@ -3,13 +3,13 @@ import 'package:test/test.dart';
 import 'package:lazy_evaluation/lazy_evaluation.dart';
 
 void main() {
-  var tInt = 1;
+  const tInt = 1;
   group('[Lazy<T>]', () {
     test(
       'if no one uses [Lazy.value], [Lazy.isValueCreated] should be false',
       () async {
         // arrange
-        var lazyInt = Lazy(() {
+        final lazyInt = Lazy(() {
           return tInt;
         });
         // assert
@@ -20,12 +20,12 @@ void main() {
       '[Lazy.value] and [lazy()] both should return a value',
       () async {
         // arrange
-        var lazyInt = Lazy(() {
+        final lazyInt = Lazy(() {
           return tInt;
         });
         // act
-        var result1 = lazyInt.value;
-        var result2 = lazyInt();
+        final result1 = lazyInt.value;
+        final result2 = lazyInt();
         // assert
         expect(result1, tInt);
         expect(result2, tInt);
@@ -37,7 +37,7 @@ void main() {
       () async {
         // arrange
         var number = tInt;
-        var lazyInt = Lazy(() {
+        final lazyInt = Lazy(() {
           number++;
           return number;
         });
@@ -58,7 +58,7 @@ void main() {
       () async {
         // arrange
         var number = tInt;
-        var lazyInt = Lazy(() {
+        final lazyInt = Lazy(() {
           number++;
           return Future<int>(() => number);
         });
@@ -81,8 +81,8 @@ void main() {
       'two instances with the same value should be equal',
       () async {
         // arrange
-        var lazy1 = Lazy(() => tInt);
-        var lazy2 = Lazy(() => tInt);
+        final lazy1 = Lazy(() => tInt);
+        final lazy2 = Lazy(() => tInt);
         // act
         lazy1.value;
         lazy2.value;
@@ -97,12 +97,12 @@ void main() {
       () async {
         // arrange
         var number = tInt;
-        var lazyInt = MutableLazy(() => number);
+        final lazyInt = MutableLazy(() => number);
         // act
-        var result1 = lazyInt.value;
+        final result1 = lazyInt.value;
         number = 5;
         lazyInt.notifyChange();
-        var result2 = lazyInt.value;
+        final result2 = lazyInt.value;
         // assert
         expect(result1 + result2, number + tInt);
       },
@@ -112,8 +112,8 @@ void main() {
       () async {
         var number = tInt - 1;
         // arrange
-        var lazy1 = MutableLazy(() => tInt);
-        var lazy2 = MutableLazy(() => number);
+        final lazy1 = MutableLazy(() => tInt);
+        final lazy2 = MutableLazy(() => number);
         // act
         lazy1.value;
         lazy2.value;

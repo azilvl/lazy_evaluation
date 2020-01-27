@@ -29,7 +29,7 @@ class Lazy<T> {
   }
 
   @override
-  bool operator ==(other) =>
+  bool operator ==(dynamic other) =>
       identical(this, other) || (other is Lazy && other._value == _value);
 
   @override
