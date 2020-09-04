@@ -2,12 +2,13 @@ import 'package:test/test.dart';
 
 import 'package:lazy_evaluation/lazy_evaluation.dart';
 
+
 void main() {
   const tInt = 1;
   group('[Lazy<T>]', () {
     test(
       'if no one uses [Lazy.value], [Lazy.isValueCreated] should be false',
-      () async {
+      () {
         // arrange
         final lazyInt = Lazy(() {
           return tInt;
@@ -18,7 +19,7 @@ void main() {
     );
     test(
       '[Lazy.value] and [lazy()] both should return a value',
-      () async {
+      () {
         // arrange
         final lazyInt = Lazy(() {
           return tInt;
@@ -34,7 +35,7 @@ void main() {
 
     test(
       'factory should only run once',
-      () async {
+      () {
         // arrange
         var number = tInt;
         final lazyInt = Lazy(() {
@@ -55,7 +56,7 @@ void main() {
 
     test(
       "multiple non-awaited asynchronous [Lazy.value] calls shouldn't cause multiple factory calls",
-      () async {
+      () {
         // arrange
         var number = tInt;
         final lazyInt = Lazy(() {
@@ -79,7 +80,7 @@ void main() {
     );
     test(
       'two instances with the same value should be equal',
-      () async {
+      () {
         // arrange
         final lazy1 = Lazy(() => tInt);
         final lazy2 = Lazy(() => tInt);
@@ -94,7 +95,7 @@ void main() {
   group('[MutableLazy<T>]', () {
     test(
       'should be able to change a referenced object in the factory and get updated value',
-      () async {
+      () {
         // arrange
         var number = tInt;
         final lazyInt = MutableLazy(() => number);
@@ -109,7 +110,7 @@ void main() {
     );
     test(
       'two instances with the same value should be equal',
-      () async {
+      () {
         var number = tInt - 1;
         // arrange
         final lazy1 = MutableLazy(() => tInt);
