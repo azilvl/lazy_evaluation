@@ -2,7 +2,6 @@ import 'package:test/test.dart';
 
 import 'package:lazy_evaluation/lazy_evaluation.dart';
 
-
 void main() {
   const tInt = 1;
   group('[Lazy<T>]', () {
