@@ -14,7 +14,7 @@ class Lazy<T> {
 
   /// the lazily initialized value.
   T get value => _isValueCreated ? _value : _createValue();
-  late T _value;
+  late final T _value;
 
   /// Returns the lazily initialized [value].
   T call() => value;
@@ -57,6 +57,10 @@ class MutableLazy<T> extends Lazy<T> {
   void notifyChange() {
     _isValueCreated = false;
   }
+  
+  @override  
+  // ignore: overridden_fields
+  late T _value;
 
   @override
   T _createValue() {
