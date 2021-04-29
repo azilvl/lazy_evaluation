@@ -34,8 +34,7 @@ dart format bin lib test
 echo
 echo -e "${BLUE}=== Analyzing $PWD...${RESET}"
 echo
-dart analyze --version
-echo
+
 
 dart analyze \
     --fatal-warnings \

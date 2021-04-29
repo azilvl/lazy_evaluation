@@ -6,7 +6,7 @@ class Lazy<T> {
   /// specified here gets used and creates the value.
   Lazy(InitFunction<T> function) : _factory = function;
 
-  InitFunction<T> _factory;
+  InitFunction<T>? _factory;
 
   /// Returns true if the [value] has been created and cached.
   bool get isValueCreated => _isValueCreated;
@@ -20,8 +20,8 @@ class Lazy<T> {
   T call() => value;
 
   T _createValue() {
-    _value = _factory();
-    _factory = () => Never as T;
+    _value = _factory!();
+    _factory = null;
     _isValueCreated = true;
     return _value;
   }
@@ -60,7 +60,7 @@ class MutableLazy<T> extends Lazy<T> {
 
   @override
   T _createValue() {
-    _value = _factory();
+    _value = _factory!();
     _isValueCreated = true;
     return _value;
   }
