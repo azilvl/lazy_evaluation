@@ -24,9 +24,9 @@ main() {
   print(myLazyString); 
 }
 ```
-It still makes sense to keep this up because it has some advantages over late lazies. for example with late you have to initialize the variable right where you're defining it or it wont be lazy. 
+It still makes sense to keep this up because it has some advantages over `late` lazies. For example, with `late` you have to initialize the variable right where you're defining it or it wont be lazy. 
 
-Also this package has `MutableLazy` which gives you the ability to reset the variable's state by using the `reset()` function. after a `reset()` call the function reruns and updates the lazy value.
+Also this package has `MutableLazy` which gives you the ability to reset the variable's state by using the `reset()` function. After a `reset()` call the function reruns and updates the lazy value next time it gets accessed.
 
 ```dart
 var number = 1;
