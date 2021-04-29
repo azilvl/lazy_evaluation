@@ -1,3 +1,4 @@
+include: package:pedantic/analysis_options.yaml
 analyzer:
   strong-mode:
     implicit-casts: false
@@ -7,8 +8,10 @@ analyzer:
     missing_required_param: warning
     # treat missing returns as a warning (not a hint)
     missing_return: warning
-  
-    
+  enable-experiment:
+    - non-nullable
+
+
 
 linter:
   rules:

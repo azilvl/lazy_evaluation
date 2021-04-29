@@ -2,10 +2,9 @@ typedef InitFunction<T> = T Function();
 
 /// Lazily creates `T` when needed.
 class Lazy<T> {
-  /// during the initialization, the [function] specified here gets used and creates the value.
-  Lazy(InitFunction<T> function) {
-    _factory = function;
-  }
+  /// during the initialization, the [function]
+  /// specified here gets used and creates the value.
+  Lazy(InitFunction<T> function) : _factory = function;
 
   InitFunction<T> _factory;
 
@@ -15,15 +14,14 @@ class Lazy<T> {
 
   /// the lazily initialized value.
   T get value => _isValueCreated ? _value : _createValue();
-  T _value;
+  late T _value;
 
   /// Returns the lazily initialized [value].
   T call() => value;
 
   T _createValue() {
-    assert(_factory != null, "Lazy factory shouldn't be null");
     _value = _factory();
-    _factory = null;
+    _factory = () => Never as T;
     _isValueCreated = true;
     return _value;
   }
@@ -37,7 +35,8 @@ class Lazy<T> {
 }
 
 /// Lazily creates `T` when needed.
-/// gets notified by a [notifyChange()] call that something has been modified and it needs to re-create the value.
+/// gets notified by a [notifyChange()] call that something
+/// has been modified and it needs to re-create the value.
 ///
 /// ```dart
 /// var number = 1;
@@ -48,18 +47,19 @@ class Lazy<T> {
 /// print(mutableLazy.value); // 6
 /// ```
 class MutableLazy<T> extends Lazy<T> {
-  /// for each initialization, the [function] specified here gets used and creates the value.
+  /// for each initialization, the [function] specified
+  /// here gets used and creates the value.
   MutableLazy(InitFunction<T> function) : super(function);
 
-  /// Notifies the Lazy object that something that was used in the init function has been changed and it needs to re-initialize next time it tries to get the [value].
+  /// Notifies the Lazy object that something that was
+  /// used in the init function has been changed and it needs to
+  /// re-initialize next time it tries to get the [value].
   void notifyChange() {
     _isValueCreated = false;
-    _value = null;
   }
 
   @override
   T _createValue() {
-    assert(_factory != null, "Lazy factory shouldn't be null");
     _value = _factory();
     _isValueCreated = true;
     return _value;

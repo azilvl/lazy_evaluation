@@ -1,5 +1,5 @@
 # Lazy Evaluation
-A simple package to cache and lazily evaluate objects that have a costly initialization process. 
+A simple package to cache and lazily evaluate objects that have a costly initialization process.
 
 ### Usage
 
