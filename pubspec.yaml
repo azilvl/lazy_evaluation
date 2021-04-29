@@ -1,7 +1,7 @@
 name: lazy_evaluation
 description: A simple package to cache and lazily evaluate objects that have a
   expensive initialization process.
-version: 1.0.1
+version: 1.1.0
 homepage: https://github.com/azilvl/lazy_evaluation
 
 environment:

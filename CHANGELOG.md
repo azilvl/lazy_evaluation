@@ -1,3 +1,6 @@
+## 1.1.0
+
+- renamed `notifyChange()` to `reset()`
 ## 1.0.1
 
 - minor changes
