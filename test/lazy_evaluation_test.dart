@@ -100,7 +100,7 @@ void main() {
         // act
         final result1 = lazyInt.value;
         number = 5;
-        lazyInt.notifyChange();
+        lazyInt.reset();
         final result2 = lazyInt.value;
         // assert
         expect(result1 + result2, number + tInt);
@@ -117,7 +117,7 @@ void main() {
         lazy1.value;
         lazy2.value;
         number++;
-        lazy2.notifyChange();
+        lazy2.reset();
         lazy2.value;
         // assert
         expect(lazy1, lazy2);

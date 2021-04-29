@@ -35,7 +35,7 @@ class Lazy<T> {
 }
 
 /// Lazily creates `T` when needed.
-/// gets notified by a [notifyChange()] call that something
+/// gets notified by a [reset()] call that something
 /// has been modified and it needs to re-create the value.
 ///
 /// ```dart
@@ -43,7 +43,7 @@ class Lazy<T> {
 /// var mutableLazy = MutableLazy(() => number * 3);
 /// print(mutableLazy.value); // 3
 /// number = 2;
-/// mutableLazy.notifyChange();
+/// mutableLazy.reset();
 /// print(mutableLazy.value); // 6
 /// ```
 class MutableLazy<T> extends Lazy<T> {
@@ -54,7 +54,7 @@ class MutableLazy<T> extends Lazy<T> {
   /// Notifies the Lazy object that something that was
   /// used in the init function has been changed and it needs to
   /// re-initialize next time it tries to get the [value].
-  void notifyChange() {
+  void reset() {
     _isValueCreated = false;
   }
 
