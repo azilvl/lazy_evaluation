@@ -1,4 +1,5 @@
 # Lazy Evaluation
+[![Build Status](https://travis-ci.com/azilvl/lazy_evaluation.svg?branch=master)](https://travis-ci.com/azilvl/lazy_evaluation)
 A simple package to cache and lazily evaluate objects that have a costly initialization process.
 
 ### Usage
