@@ -1,3 +1,6 @@
+## 1.0.1
+
+- minor changes
 ## 1.0.0
 
 - null safety

@@ -57,8 +57,8 @@ class MutableLazy<T> extends Lazy<T> {
   void notifyChange() {
     _isValueCreated = false;
   }
-  
-  @override  
+
+  @override
   // ignore: overridden_fields
   late T _value;
 
